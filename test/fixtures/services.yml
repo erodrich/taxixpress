@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  co_confirmacion: MyString
+  fe_fecha: 2015-09-26
+  fe_hora: 2015-09-26 01:14:00
+  nu_telefono: MyString
+  ss_costo_estimado: 1.5
+  ss_costo_final: 1.5
+
+two:
+  co_confirmacion: MyString
+  fe_fecha: 2015-09-26
+  fe_hora: 2015-09-26 01:14:00
+  nu_telefono: MyString
+  ss_costo_estimado: 1.5
+  ss_costo_final: 1.5

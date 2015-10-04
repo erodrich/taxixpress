@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nu_casa: 1
+  tx_edif_dpto: MyString
+
+two:
+  nu_casa: 1
+  tx_edif_dpto: MyString

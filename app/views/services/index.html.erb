@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listado de Servicios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Co confirmacion</th>
+      <th>Fe fecha</th>
+      <th>Fe hora</th>
+      <th>Nu telefono</th>
+      <th>Ss costo estimado</th>
+      <th>Ss costo final</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.co_confirmacion %></td>
+        <td><%= service.fe_fecha %></td>
+        <td><%= service.fe_hora %></td>
+        <td><%= service.nu_telefono %></td>
+        <td><%= service.ss_costo_estimado %></td>
+        <td><%= service.ss_costo_final %></td>
+        <td><%= link_to 'Show', user_service_path(@user, service) %></td>
+        <td><%= link_to 'Edit', edit_user_service_path(@user,service) %></td>
+        <td><%= link_to 'Destroy', [@user,service] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Feedback', new_feedback_path %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Service', new_user_service_path(@user) %>

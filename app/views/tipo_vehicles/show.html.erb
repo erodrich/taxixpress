@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>No tipo:</strong>
+  <%= @tipo_vehicle.no_tipo %>
+</p>
+
+<p>
+  <strong>Nu pasajeros:</strong>
+  <%= @tipo_vehicle.nu_pasajeros %>
+</p>
+
+<%= link_to 'Edit', edit_tipo_vehicle_path(@tipo_vehicle) %> |
+<%= link_to 'Back', tipo_vehicles_path %>

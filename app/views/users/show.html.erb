@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>No user:</strong>
+  <%= @user.no_user %>
+</p>
+
+<p>
+  <strong>No correo:</strong>
+  <%= @user.no_correo %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Solicitar Servicio', new_user_service_path(@user) %>

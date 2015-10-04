@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Codigo de Confirmacion:</strong>
+  <%= @service.co_confirmacion %>
+</p>
+<p>
+  <strong>Direccion Origen:</strong>
+  <%= @a1.tipo_street.no_tipo_via  %>
+  <%= @a1.street %>
+  <%= @a1.nu_casa  %>
+  <%= @a1.district.no_distrito %>
+</p>
+<p>
+  <strong>Direccion Destino:</strong>
+  <%= @a2.tipo_street.no_tipo_via  %>
+  <%= @a2.street %>
+  <%= @a2.nu_casa  %>
+  <%= @a2.district.no_distrito %>
+</p>
+<p>
+  <strong>Fecha:</strong>
+  <%= @service.fe_fecha %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @service.fe_hora %>
+</p>
+
+<p>
+  <strong>Telefono de contacto:</strong>
+  <%= @service.nu_telefono %>
+</p>
+
+<p>
+  <strong>Costo aproximado:</strong>
+  <%= @service.ss_costo_estimado %>
+</p>
+
+<p>
+  <strong>Ss costo final:</strong>
+  <%= @service.ss_costo_final %>
+</p>
+
+<%= link_to 'Back', user_services_path(@user) %> |

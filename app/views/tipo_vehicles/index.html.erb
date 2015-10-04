@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tipo Vehicles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>No tipo</th>
+      <th>Nu pasajeros</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_vehicles.each do |tipo_vehicle| %>
+      <tr>
+        <td><%= tipo_vehicle.no_tipo %></td>
+        <td><%= tipo_vehicle.nu_pasajeros %></td>
+        <td><%= link_to 'Show', tipo_vehicle %></td>
+        <td><%= link_to 'Edit', edit_tipo_vehicle_path(tipo_vehicle) %></td>
+        <td><%= link_to 'Destroy', tipo_vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tipo vehicle', new_tipo_vehicle_path %>
