@@ -11,23 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001180108) do
+ActiveRecord::Schema.define(version: 20151004062436) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "nu_casa",         limit: 4
-    t.string   "tx_edif_dpto",    limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "city_id",         limit: 4
-    t.integer  "district_id",     limit: 4
-    t.integer  "tipo_street_id",  limit: 4
-    t.string   "street",          limit: 255
+    t.integer  "nu_casa",        limit: 4
+    t.string   "tx_edif_dpto",   limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "city_id",        limit: 4
+    t.integer  "district_id",    limit: 4
+    t.integer  "tipo_street_id", limit: 4
+    t.string   "street",         limit: 255
   end
 
   add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
   add_index "addresses", ["district_id"], name: "index_addresses_on_district_id", using: :btree
   add_index "addresses", ["tipo_street_id"], name: "index_addresses_on_tipo_street_id", using: :btree
-  
 
   create_table "addresses_services", id: false, force: :cascade do |t|
     t.integer "service_id", limit: 4,                 null: false
@@ -139,6 +138,8 @@ ActiveRecord::Schema.define(version: 20151001180108) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "users", ["no_correo"], name: "index_users_on_no_correo", unique: true, using: :btree
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "no_marca",        limit: 255

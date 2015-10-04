@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listado de Servicios</h1>
-
+<%= link_to 'Solicitar servicio', new_user_service_path(@user) %>
 <table>
   <thead>
     <tr>
@@ -24,10 +24,10 @@
         <td><%= service.nu_telefono %></td>
         <td><%= service.ss_costo_estimado %></td>
         <td><%= service.ss_costo_final %></td>
-        <td><%= link_to 'Show', user_service_path(@user, service) %></td>
-        <td><%= link_to 'Edit', edit_user_service_path(@user,service) %></td>
-        <td><%= link_to 'Destroy', [@user,service] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Feedback', new_feedback_path %></td>
+        <td><%= link_to 'Ver', user_service_path(@user, service) %></td>
+        <td><%= link_to 'Editar', edit_user_service_path(@user,service) %></td>
+        <td><%= link_to 'Eliminar', [@user,service] , method: :delete, data: { confirm: '¿Esta seguro de eliminar este servicio?' } %></td>
+        <td><%= link_to 'Feedback', '#' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Service', new_user_service_path(@user) %>
+

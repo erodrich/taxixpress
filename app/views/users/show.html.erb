@@ -1,14 +1,13 @@
+<% provide(:title, @user.no_user) %>
 <p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-4">
+		<h2><%= gravatar_for @user %>
+ 		<%= @user.no_user %>
+		</h2>
+		<%= link_to 'Editar datos', edit_user_path(@user) %>
+		<%= link_to 'Solicitar Servicio', new_user_service_path(@user) %>
+	</div>
+</div>  
 
-<p>
-  <strong>No user:</strong>
-  <%= @user.no_user %>
-</p>
 
-<p>
-  <strong>No correo:</strong>
-  <%= @user.no_correo %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%= link_to 'Solicitar Servicio', new_user_service_path(@user) %>
