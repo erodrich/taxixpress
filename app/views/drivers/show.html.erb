@@ -1,24 +1,11 @@
+<% provide(:title, @driver.no_driver) %>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>No driver:</strong>
-  <%= @driver.no_driver %>
-</p>
-
-<p>
-  <strong>No correo:</strong>
-  <%= @driver.no_correo %>
-</p>
-
-<p>
-  <strong>Nu telefono:</strong>
-  <%= @driver.nu_telefono %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @driver.password_digest %>
-</p>
-
-<%= link_to 'Edit', edit_driver_path(@driver) %> |
-<%= link_to 'Back', drivers_path %>
+<div class="row">
+	<div class="col-md-4">
+		<h2><%= gravatar_for_driver @driver %>
+ 		<%= @driver.no_driver %>
+		</h2>
+		<%= link_to 'Editar datos', edit_driver_path(@driver) %>
+		<%= link_to 'Capturar Servicio', "#" %>
+	</div>
+</div>  

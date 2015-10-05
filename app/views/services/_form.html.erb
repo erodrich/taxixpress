@@ -7,21 +7,29 @@
     <% flag ? msg = "Origen" : msg = "Destino" %>
     <h2><%= msg %></h2>
     <div class="form-inputs">
-      <%= a.association :tipo_street, label: "Tipo de Via: ",label_method: :no_tipo_via, label_value: :id %>
+      <%= a.association :tipo_street, label: "Tipo de Via: ",
+                                      label_method: :no_tipo_via,
+                                      label_value: :id %>
       <%= a.input :street, label: "Nombre de la Via: " %>
       <%= a.input :nu_casa, label: "Numero: " %>
       <%= a.input :tx_edif_dpto, label: "Edificio/Dpto/Lote: " %>
-      <%= a.association :district, label: "Distrito: ", label_method: :no_distrito, label_value: :id %>
+      <%= a.association :district, label: "Distrito: ", 
+                                   label_method: :no_distrito, 
+                                   label_value: :id %>
     </div>
     <% flag=false %>
   <% end %>
   <% end %>
   <div class="form-inputs">
+
     <%= f.input :fe_fecha, label: "Fecha: "  %>
     <%= f.input :fe_hora, label: "Hora: " %>
     <%= f.input :nu_telefono, label: "Telefono: " %>
-    <%= f.input :ss_costo_estimado, label: "Costo aproximado: " %>
-    <%= f.input :ss_costo_final %>
+    <%= f.input :tipo_vehicle, collection: @tipo_vehicles, 
+                               label_method: :nu_pasajeros,
+                               label_value: :id,
+                               label: "Vehiculo para: "  %>
+ 
   </div>
 
   <div class="form-actions">

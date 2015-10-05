@@ -6,14 +6,15 @@
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control', placeholder: 'user@domain.com' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control',placeholder: 'password' %>
 
       <%= f.submit "Iniciar", class: "btn btn-primary" %>
     <% end %>
 
     <p>Eres nuevo? <%= link_to "Registrate aquí!", signup_path %></p>
+    <p>Deseas inscribirte como chofer? <%= link_to "Puedes hacerlo aquí!", new_driver_path %></p>
   </div>
 </div>

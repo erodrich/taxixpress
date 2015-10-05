@@ -19,8 +19,8 @@
     <% @services.each do |service| %>
       <tr>
         <td><%= service.co_confirmacion %></td>
-        <td><%= service.fe_fecha %></td>
-        <td><%= service.fe_hora %></td>
+        <td><%= service.fe_fecha.to_s %></td>
+        <td><%= service.fe_hora.to_s %></td>
         <td><%= service.nu_telefono %></td>
         <td><%= service.ss_costo_estimado %></td>
         <td><%= service.ss_costo_final %></td>

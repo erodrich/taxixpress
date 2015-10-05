@@ -1,29 +1,50 @@
+<% if logged_in? && session[:role] == "user" %>
+<%  name = current_user.no_user %>
+<%  edit = edit_user_path(current_user.id) %>
+<%  logout = logout_path %>
+<% end %>
+<% if logged_in? && session[:role] == "driver" %>
+<%   name = current_user.no_driver %>
+<%   edit = edit_driver_path(current_user.id) %> 
+<%   logout = chofer_logout_path %>
+<% end %>
+
 <header class="navbar navbar-fixed-top navbar-inverse">
+<% if logged_in? %>
   <div class="container">
-    <%= link_to "Taxi Xpress", root_path, id: "logo" %>
+    <li><%= link_to "Taxi Xpress", current_user, id: "logo" %></li>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Inicio", current_user %></li>
+        <li><%= link_to "Contacto", contact_path %></li>
+        <li><%= link_to "Acerca de Nosotros", about_path %></li>          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= name %>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Perfil", current_user %></li>
+            <li><%= link_to "Editar",  edit %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Salir", logout, method: "delete" %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+<% else %>
+<div class="container">
+    <li><%= link_to "Taxi Xpress", root_path, id: "logo" %></li>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Inicio", root_path %></li>
         <li><%= link_to "Contacto", contact_path %></li>
         <li><%= link_to "Acerca de Nosotros", about_path %></li>
-        <% if logged_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.no_user %> <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Perfil", current_user %></li>
-              <li><%= link_to "Editar", edit_user_path(current_user.id) %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Salir", logout_path, method: "delete" %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <li><%= link_to "Ingresar", login_path %></li>
-        <% end %>
+        <li><%= link_to "Ingresar", login_path %></li>
       </ul>
     </nav>
   </div>
+<% end %>
 </header>
+  

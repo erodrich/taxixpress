@@ -28,6 +28,7 @@ class DriversController < ApplicationController
 
     respond_to do |format|
       if @driver.save
+        log_in(@driver, "driver")
         format.html { redirect_to @driver, notice: 'Driver was successfully created.' }
         format.json { render :show, status: :created, location: @driver }
       else
@@ -69,6 +70,6 @@ class DriversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_params
-      params.require(:driver).permit(:no_driver, :no_correo, :nu_telefono, :password_digest)
+      params.require(:driver).permit(:no_driver, :no_correo, :nu_telefono, :password, :password_confirmation)
     end
 end

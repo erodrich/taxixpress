@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004062436) do
+ActiveRecord::Schema.define(version: 20151005064839) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "nu_casa",        limit: 4
@@ -98,8 +98,10 @@ ActiveRecord::Schema.define(version: 20151004062436) do
     t.integer  "user_id",           limit: 4
     t.integer  "payment_method_id", limit: 4
     t.integer  "tipo_vehicle_id",   limit: 4
+    t.integer  "address_id",        limit: 4
   end
 
+  add_index "services", ["address_id"], name: "index_services_on_address_id", using: :btree
   add_index "services", ["driver_id"], name: "index_services_on_driver_id", using: :btree
   add_index "services", ["feedback_id"], name: "index_services_on_feedback_id", using: :btree
   add_index "services", ["payment_method_id"], name: "index_services_on_payment_method_id", using: :btree
@@ -160,6 +162,7 @@ ActiveRecord::Schema.define(version: 20151004062436) do
   add_foreign_key "drivers", "vehicles"
   add_foreign_key "feedbacks", "drivers"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "services", "addresses"
   add_foreign_key "services", "drivers"
   add_foreign_key "services", "feedbacks"
   add_foreign_key "services", "payment_methods"

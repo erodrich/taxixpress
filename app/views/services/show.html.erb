@@ -19,12 +19,12 @@
 </p>
 <p>
   <strong>Fecha:</strong>
-  <%= @service.fe_fecha %>
+  <%= @service.fe_fecha.to_s %>
 </p>
 
 <p>
   <strong>Hora:</strong>
-  <%= @service.fe_hora %>
+  <%= @service.fe_hora.to_s(:time) %> horas
 </p>
 
 <p>

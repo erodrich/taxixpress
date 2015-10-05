@@ -74,3 +74,8 @@ tipo_streets = TipoStreet.create ([
 	{ no_tipo_via: 'Mz'},
 	{ no_tipo_via: 'Pasaje'},
 	])
+tipo_vehicles = TipoVehicle.create ([
+	{no_tipo: 'Sedan',nu_pasajeros: 4},
+	{no_tipo: 'Camioneta/Van',nu_pasajeros: 8},
+	{no_tipo: 'Station Wagon',nu_pasajeros: 4},
+	])

@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
 	<div class="col-md-4">
-		<h2><%= gravatar_for @user %>
+		<h2><%= gravatar_for_user @user %>
  		<%= @user.no_user %>
 		</h2>
 		<%= link_to 'Editar datos', edit_user_path(@user) %>

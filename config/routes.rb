@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get    'chofer/login'   => 'driver_session#new'
+  post   'chofer/login'   => 'driver_session#create'
+  delete 'chofer/logout'  => 'driver_session#destroy'
+
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

@@ -23,6 +23,7 @@ class ServicesController < ApplicationController
     @service = Service.new
     @origin = @service.addresses.new
     @destiny = @service.addresses.new
+    @tipo_vehicles = TipoVehicle.all
   end
 
   # GET /services/1/edit
