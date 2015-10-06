@@ -1,10 +1,14 @@
-<%= simple_form_for(@vehicle) do |f| %>
+<%= simple_form_for([@driver,@vehicle]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :no_marca %>
-    <%= f.input :no_modelo %>
-    <%= f.input :nu_placa %>
+    <%= f.input :no_marca, label: "Marca: " %>
+    <%= f.input :no_modelo, label: "Modelo: " %>
+    <%= f.input :nu_placa, label: "Placa: " %>
+    <%= f.association :tipo_vehicle, 
+                               label_method: :no_tipo,
+                               label_value: :id,
+                               label: "Tipo de Vehiculo: "  %>
   </div>
 
   <div class="form-actions">

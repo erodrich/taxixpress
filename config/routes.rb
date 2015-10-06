@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   root 'static#index'
 
 resources :users, only: [:new, :create, :show, :edit, :update] do
-  resources :services
+  resources :services, except: :index
 end
 resources :drivers do
 	resources :services
+  resources :vehicles
 end
 
 

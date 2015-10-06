@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_driver, 
   # GET /vehicles
   # GET /vehicles.json
   def index
@@ -10,6 +10,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+
   end
 
   # GET /vehicles/new
@@ -25,10 +26,11 @@ class VehiclesController < ApplicationController
   # POST /vehicles.json
   def create
     @vehicle = Vehicle.new(vehicle_params)
+    @vehicle.driver_id = @driver.id
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+        format.html { redirect_to [@driver, @vehicle], notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
+        format.html { redirect_to [@driver, @vehicle], notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle.destroy
     respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
+      format.html { redirect_to [@driver,@vehicle], notice: 'Vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +69,16 @@ class VehiclesController < ApplicationController
       @vehicle = Vehicle.find(params[:id])
     end
 
+    def set_driver
+      @driver = Driver.find(params[:driver_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:no_marca, :no_modelo, :nu_placa)
+      params.require(:vehicle).permit(:no_marca,
+          :no_modelo,
+          :nu_placa,
+          :tipo_vehicle_id,
+          :driver_id)
     end
 end

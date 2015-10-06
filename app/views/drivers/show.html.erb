@@ -6,6 +6,11 @@
  		<%= @driver.no_driver %>
 		</h2>
 		<%= link_to 'Editar datos', edit_driver_path(@driver) %>
-		<%= link_to 'Capturar Servicio', "#" %>
+		<%= link_to 'Ver Vehiculos', driver_vehicles_path(@driver) %>
 	</div>
 </div>  
+<div class="row">
+	<div class="col-md-6">
+  <%= render 'possible_services' %>
+	</div>
+</div> 

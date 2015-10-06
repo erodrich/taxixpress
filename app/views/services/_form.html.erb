@@ -25,10 +25,14 @@
     <%= f.input :fe_fecha, label: "Fecha: "  %>
     <%= f.input :fe_hora, label: "Hora: " %>
     <%= f.input :nu_telefono, label: "Telefono: " %>
-    <%= f.input :tipo_vehicle, collection: @tipo_vehicles, 
+    <%= f.association :tipo_vehicle, 
                                label_method: :nu_pasajeros,
                                label_value: :id,
-                               label: "Vehiculo para: "  %>
+                               label: "Hasta cuantos pasajeros: "  %>
+    <%= f.association :payment_method, 
+                               label_method: :tx_descripcion,
+                               label_value: :id,
+                               label: "Forma de pago: "  %>
  
   </div>
 

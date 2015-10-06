@@ -1,7 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listado de Servicios</h1>
-<%= link_to 'Solicitar servicio', new_user_service_path(@user) %>
+<h3>Ultimos Servicios</h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,12 +20,8 @@
         <td><%= service.ss_costo_estimado %></td>
         <td><%= service.get_status(service).no_status %></td>
         <td><%= link_to 'Ver', user_service_path(@user, service) %></td>
-        <td><%= link_to 'Editar', edit_user_service_path(@user,service) %></td>
-        <td><%= link_to 'Eliminar', [@user,service] , method: :delete, data: { confirm: '¿Esta seguro de eliminar este servicio?' } %></td>
         <td><%= link_to 'Feedback', '#' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-

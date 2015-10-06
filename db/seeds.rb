@@ -64,7 +64,7 @@ districts = District.create ([
 	{ no_distrito: 'La Perla'},
 	{ no_distrito: 'La Punta'},
 	{ no_distrito: 'Mi Perú'},
-	{ no_distrito: 'Ventanilla'},
+	{ no_distrito: 'Ventanilla'}
 	])
 tipo_streets = TipoStreet.create ([
 	{ no_tipo_via: 'Calle'},
@@ -72,10 +72,21 @@ tipo_streets = TipoStreet.create ([
 	{ no_tipo_via: 'Plaza'},
 	{ no_tipo_via: 'Jiron'},
 	{ no_tipo_via: 'Mz'},
-	{ no_tipo_via: 'Pasaje'},
+	{ no_tipo_via: 'Pasaje'}
 	])
 tipo_vehicles = TipoVehicle.create ([
 	{no_tipo: 'Sedan',nu_pasajeros: 4},
-	{no_tipo: 'Camioneta/Van',nu_pasajeros: 8},
-	{no_tipo: 'Station Wagon',nu_pasajeros: 4},
+	{no_tipo: 'Camioneta/Van',nu_pasajeros: 8}
+	])
+statuses = Status.create([
+	{no_status: "Pendiente"},
+	{no_status: "Asignado"},
+	{no_status: "En curso"},
+	{no_status: "Finalizado"},
+	{no_status: "Anulado"}
+	])
+payment_methods = PaymentMethod.create([
+	{tx_descripcion: "Efectivo"},
+	{tx_descripcion: "Tarjeta debito" },
+	{tx_descripcion: "Tarjeta credito"}
 	])

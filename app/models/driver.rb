@@ -1,6 +1,9 @@
 class Driver < ActiveRecord::Base
 	before_save {self.no_correo = no_correo.downcase}
 	has_many :services
+	has_many :vehicles
+
+	accepts_nested_attributes_for :vehicles
 
 	validates :no_driver, presence: true, length: { maximum: 50}
 	validates :nu_telefono, presence: true, length: { maximum: 20}
@@ -11,4 +14,11 @@ class Driver < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
+	def get_possible_services
+		vehicle = Vehicle.where(["driver_id = ?", self.id])
+		tipo_vehicle = vehicle.first.tipo_vehicle.id
+		services = Service.where(["tipo_vehicle_id = ? and status_id = ?",
+																						tipo_vehicle, 1])
+		return services
+	end
 end

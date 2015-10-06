@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :set_client
 
   # GET /services
   # GET /services.json
@@ -15,6 +15,8 @@ class ServicesController < ApplicationController
     @addresses = @service.addresses_services
     @a1 = Address.find(@addresses[0][:address_id])
     @a2 = Address.find(@addresses[1][:address_id])
+    @status = Status.find(@service.status_id)
+    @tipo_vehicle = TipoVehicle.find(@service.tipo_vehicle_id)
 
   end
 
@@ -24,6 +26,7 @@ class ServicesController < ApplicationController
     @origin = @service.addresses.new
     @destiny = @service.addresses.new
     @tipo_vehicles = TipoVehicle.all
+
   end
 
   # GET /services/1/edit
@@ -36,6 +39,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     @service.user_id = @user.id
     @service.co_confirmacion = @service.get_cod_confirmacion
+    @service.status_id = 1
 
 
     respond_to do |format|
@@ -79,9 +83,18 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
     end
 
-    def set_user
-      @user = User.find(params[:user_id])
+    def set_client
+      @user = User.find_by(id: params[:user_id])
+      @driver = Driver.find_by(id: params[:driver_id])
+      if @user
+        return @user
+      else
+        if @driver
+          return @driver
+        end
+      end
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
@@ -91,6 +104,8 @@ class ServicesController < ApplicationController
         :nu_telefono,
         :ss_costo_estimado,
         :ss_costo_final,
+        :tipo_vehicle_id,
+        :payment_method_id,
         addresses_attributes: [:nu_casa, :tx_edif_dpto, :district_id, :tipo_street_id, :street])
     end
     #def service_params

@@ -1,8 +1,10 @@
 class Service < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :driver
+	has_one :status
 	has_one	:feedback
-	has_one :tipo_vehicle
+	belongs_to :tipo_vehicle
+	belongs_to :payment_method
 	has_many :addresses_services
 	has_many :addresses, :through => :addresses_services
 
@@ -12,6 +14,9 @@ class Service < ActiveRecord::Base
 
 	after_commit :set_costo_estimado, on: :create
 	
+	def get_status(service)
+		status = Status.find_by(id: service.status_id)
+	end
 	def set_costo_estimado
 		service = Service.last
 		adrs = Service.last.addresses_services

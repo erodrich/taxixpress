@@ -38,8 +38,13 @@
 </p>
 
 <p>
-  <strong>Ss costo final:</strong>
-  <%= @service.ss_costo_final %>
+  <strong>Tipo de Vehiculo:</strong>
+  <%= @tipo_vehicle.no_tipo %>
 </p>
 
-<%= link_to 'Back', user_services_path(@user) %> |
+<p>
+  <strong>Estado:</strong>
+  <%= @status.no_status %>
+</p>
+
+<%= link_to 'Volver', current_user %> 
