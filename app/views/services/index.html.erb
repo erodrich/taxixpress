@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listado de Servicios</h1>
+<% if session[:role] == "user" %>
 <%= link_to 'Solicitar servicio', new_user_service_path(@user) %>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,9 +24,11 @@
         <td><%= service.fe_hora.to_s(:time) %></td>
         <td><%= service.ss_costo_estimado %></td>
         <td><%= service.get_status(service).no_status %></td>
+        <% if session[:role] == "user" %>
         <td><%= link_to 'Ver', user_service_path(@user, service) %></td>
         <td><%= link_to 'Editar', edit_user_service_path(@user,service) %></td>
         <td><%= link_to 'Eliminar', [@user,service] , method: :delete, data: { confirm: '¿Esta seguro de eliminar este servicio?' } %></td>
+        <% end %>
         <td><%= link_to 'Feedback', '#' %></td>
       </tr>
     <% end %>

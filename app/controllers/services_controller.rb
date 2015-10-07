@@ -17,6 +17,9 @@ class ServicesController < ApplicationController
     @a2 = Address.find(@addresses[1][:address_id])
     @status = Status.find(@service.status_id)
     @tipo_vehicle = TipoVehicle.find(@service.tipo_vehicle_id)
+    if @status && @status.id != 1
+      @chofer = Driver.find(@service.driver_id)
+    end
 
   end
 
@@ -31,6 +34,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+
   end
 
   # POST /services
@@ -40,7 +44,6 @@ class ServicesController < ApplicationController
     @service.user_id = @user.id
     @service.co_confirmacion = @service.get_cod_confirmacion
     @service.status_id = 1
-
 
     respond_to do |format|
       if @service.save
@@ -58,7 +61,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to [@user,@service], notice: 'Service was successfully updated.' }
+        format.html { redirect_to [current_user,@service], notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -106,6 +109,8 @@ class ServicesController < ApplicationController
         :ss_costo_final,
         :tipo_vehicle_id,
         :payment_method_id,
+        :driver_id,
+        :status_id,
         addresses_attributes: [:nu_casa, :tx_edif_dpto, :district_id, :tipo_street_id, :street])
     end
     #def service_params

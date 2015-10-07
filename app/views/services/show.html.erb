@@ -46,5 +46,18 @@
   <strong>Estado:</strong>
   <%= @status.no_status %>
 </p>
+<% if @chofer && session[:role] == "user" %>
+<p>
+  <strong>Conductor:</strong>
+  <%= @chofer.no_driver %>
+</p>
+<% end %>
 
-<%= link_to 'Volver', current_user %> 
+<%= link_to 'Volver', current_user %>
+<% if logged_in? && session[:role] == "driver" %>
+  <%= form_for [current_user, @service], method: :patch do |f| %>
+    <%= f.hidden_field :driver_id, value: current_user.id %>
+    <%= f.hidden_field :status_id, value: 2 %>
+    <%= f.submit 'Capturar Servicio' %>
+  <% end %>
+<% end %>

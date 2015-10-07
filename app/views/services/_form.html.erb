@@ -1,6 +1,6 @@
 <% flag = true %>
 
-<%= simple_form_for([@user,@service]) do |f| %>
+<%= simple_form_for([current_user,@service]) do |f| %>
   <%= f.error_notification %>
   <% for addresses in @service.addresses %>
   <%= f.simple_fields_for :addresses, addresses do |a| %>

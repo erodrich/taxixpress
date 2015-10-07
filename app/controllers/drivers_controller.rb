@@ -16,6 +16,7 @@ class DriversController < ApplicationController
   # GET /drivers/new
   def new
     @driver = Driver.new
+    @vehicle = @driver.vehicles.new
   end
 
   # GET /drivers/1/edit
@@ -71,6 +72,11 @@ class DriversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_params
-      params.require(:driver).permit(:no_driver, :no_correo, :nu_telefono, :password, :password_confirmation)
+      params.require(:driver).permit(:no_driver,
+          :no_correo, 
+          :nu_telefono, 
+          :password, 
+          :password_confirmation,
+          vehicles_attributes: [:no_marca, :no_modelo, :nu_placa, :tipo_vehicle_id,])
     end
 end
