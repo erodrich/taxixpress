@@ -38,6 +38,6 @@ ActiveAdmin.register_page "Dashboard" do
         column :no_correo
         column :created_at
     end
-    strong { link_to "Ver usuarios", admin_users_path}
+    strong { link_to "Ver usuarios", admin_usuarios_path}
   end
 end

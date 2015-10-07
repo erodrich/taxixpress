@@ -1,5 +1,5 @@
-ActiveAdmin.register User do
-
+ActiveAdmin.register User, as: "Usuarios" do
+	remove_filter :service
 	index do
 		column "Nombre", :no_user
 		column "Correo", :no_correo
