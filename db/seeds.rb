@@ -89,4 +89,4 @@ payment_methods = PaymentMethod.create([
 	{tx_descripcion: "Efectivo"},
 	{tx_descripcion: "Tarjeta debito" },
 	{tx_descripcion: "Tarjeta credito"}
-	])
+	])AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
