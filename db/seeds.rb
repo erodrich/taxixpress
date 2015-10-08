@@ -14,7 +14,7 @@
 #	{ no_ciudad: 'Chancay' },
 #	{ no_ciudad: 'Paramonga' },
 #	])
-districts = District.create ([
+districts = District.create([
 	{ no_distrito: 'Breña'},
 	{ no_distrito: 'La Victoria'},
 	{ no_distrito: 'Lima'},
@@ -66,7 +66,7 @@ districts = District.create ([
 	{ no_distrito: 'Mi Perú'},
 	{ no_distrito: 'Ventanilla'}
 	])
-tipo_streets = TipoStreet.create ([
+tipo_streets = TipoStreet.create([
 	{ no_tipo_via: 'Calle'},
 	{ no_tipo_via: 'Avenida'},
 	{ no_tipo_via: 'Plaza'},
@@ -74,7 +74,7 @@ tipo_streets = TipoStreet.create ([
 	{ no_tipo_via: 'Mz'},
 	{ no_tipo_via: 'Pasaje'}
 	])
-tipo_vehicles = TipoVehicle.create ([
+tipo_vehicles = TipoVehicle.create([
 	{no_tipo: 'Sedan',nu_pasajeros: 4},
 	{no_tipo: 'Camioneta/Van',nu_pasajeros: 8}
 	])
@@ -89,4 +89,5 @@ payment_methods = PaymentMethod.create([
 	{tx_descripcion: "Efectivo"},
 	{tx_descripcion: "Tarjeta debito" },
 	{tx_descripcion: "Tarjeta credito"}
-	])AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+	])
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
