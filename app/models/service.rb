@@ -14,6 +14,9 @@ class Service < ActiveRecord::Base
 
 	after_commit :set_costo_estimado, on: :create
 	
+	def get_feedback
+		feedback = Feedback.find_by(service_id: self.id)
+	end
 	def get_status(service)
 		status = Status.find_by(id: service.status_id)
 	end

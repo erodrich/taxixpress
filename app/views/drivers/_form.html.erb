@@ -1,6 +1,7 @@
 <%= simple_form_for(@driver) do |f| %>
   <%= f.error_notification %>
-
+<div class="row">
+  <div class="col-md-5">
   <div class="form-group">
     <%= f.input :no_driver , label: "Nombre:" , input_html: { class: 'form-control' } %>
     <%= f.input :no_correo, label: "Correo:", input_html: { class: 'form-control' } %>
@@ -8,21 +9,11 @@
     <%= f.input :password, input_html: { class: 'form-control' }  %>
     <%= f.input :password_confirmation, label: 'Confirmar contraseña:', input_html: { class: 'form-control' }  %>
   </div>
-  <% for vehicles in @driver.vehicles %>
-    <%= f.simple_fields_for :vehicles, vehicles do |v| %>
-      <div class="form-inputs">
-        <%= v.input :no_marca, label: "Marca: "%>
-        <%= v.input :no_modelo, label: "Modelo: " %>
-        <%= v.input :nu_placa, label: "Placa: " %>
-        <%= v.association :tipo_vehicle, 
-                               label_method: :no_tipo,
-                               label_value: :id,
-                               label: "Tipo de Vehiculo: "  %>
-      </div>
-    <% end %>
-  <% end %>
+
   <div class="form-actions">
-    <%= f.button :submit, input_html: { class: 'btn btn-primary' } %>
+    <%= f.submit "Enviar", :class =>'btn btn-primary' %>
   </div>
+</div>
+</div>
 <% end %>
 

@@ -21,4 +21,10 @@ class Driver < ActiveRecord::Base
 																						tipo_vehicle, 1])
 		return services
 	end
+
+	def get_driver_services
+		services = Service.where(["driver_id = ?", self.id])
+		return services
+	end
+
 end

@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :tx_comentario %>
+    <%= f.input :tx_comentario, label: "Coméntenos: ", input_html: { class: 'form-control' }%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit "Enviar", :class =>'btn btn-primary' %>
   </div>
 <% end %>

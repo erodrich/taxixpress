@@ -16,12 +16,17 @@ Rails.application.routes.draw do
   root 'static#index'
 
 resources :users, only: [:new, :create, :show, :edit, :update] do
-  resources :services, except: :index
+  resources :services, except: :index do
+    resources :feedbacks
+  end
 end
 resources :drivers do
-	resources :services
+	resources :services do
+    resources :feedbacks
+  end
   resources :vehicles
 end
+
 
 
 

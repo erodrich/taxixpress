@@ -11,6 +11,7 @@ class DriversController < ApplicationController
   # GET /drivers/1.json
   def show
     @possible_services = @driver.get_possible_services
+    @owned_services = @driver.get_driver_services
   end
 
   # GET /drivers/new

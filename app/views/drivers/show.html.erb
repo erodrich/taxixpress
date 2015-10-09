@@ -5,12 +5,23 @@
 		<h2><%= gravatar_for_driver @driver %>
  		<%= @driver.no_driver %>
 		</h2>
-		<%= link_to 'Editar datos', edit_driver_path(@driver) %>
-		<%= link_to 'Ver Vehiculos', driver_vehicles_path(@driver) %>
+		<%= link_to 'Editar datos', edit_driver_path(@driver), :class => "btn btn-primary btn-md"  %>
+		<%= link_to 'Ver Vehiculos', driver_vehicles_path(@driver), :class => "btn btn-primary btn-md"  %>
 	</div>
-</div>  
+</div>
+
+<% if !@possible_services.empty? %>  
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-lg-12 col-md-12">
   <%= render 'possible_services' %>
 	</div>
 </div> 
+<% end %>
+
+<% if !@owned_services.empty? %>  
+<div class="row">
+	<div class="col-lg-12 col-md-12">
+  <%= render 'owned_services' %>
+	</div>
+</div> 
+<% end %>

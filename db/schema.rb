@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007213826) do
+ActiveRecord::Schema.define(version: 20151009181525) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -106,9 +106,11 @@ ActiveRecord::Schema.define(version: 20151007213826) do
     t.datetime "updated_at",                  null: false
     t.integer  "user_id",       limit: 4
     t.integer  "driver_id",     limit: 4
+    t.integer  "service_id",    limit: 4
   end
 
   add_index "feedbacks", ["driver_id"], name: "index_feedbacks_on_driver_id", using: :btree
+  add_index "feedbacks", ["service_id"], name: "index_feedbacks_on_service_id", using: :btree
   add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "payment_methods", force: :cascade do |t|
@@ -194,6 +196,7 @@ ActiveRecord::Schema.define(version: 20151007213826) do
   add_foreign_key "addresses", "tipo_streets"
   add_foreign_key "drivers", "vehicles"
   add_foreign_key "feedbacks", "drivers"
+  add_foreign_key "feedbacks", "services"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "services", "drivers"
   add_foreign_key "services", "feedbacks"

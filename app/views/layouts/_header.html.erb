@@ -12,7 +12,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 <% if logged_in? %>
   <div class="container">
-    <li><%= link_to "Taxi Xpress", current_user, id: "logo" %></li>
+    <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "Taxi Xpress", current_user, id: "logo" %></li>
+    </ul>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Inicio", current_user %></li>
@@ -22,7 +24,7 @@
             <%= name %>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Perfil", current_user %></li>
+            <li><%= link_to "Perfil", current_user %>
             <li><%= link_to "Editar",  edit %></li>
             <li class="divider"></li>
             <li>
@@ -35,7 +37,9 @@
   </div>
 <% else %>
 <div class="container">
-    <li><%= link_to "Taxi Xpress", root_path, id: "logo" %></li>
+    <ul class="nav navbar-nav navbar-left">
+      <%= link_to "Taxi Xpress", root_path, id: "logo" %>
+    </ul>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Inicio", root_path %></li>

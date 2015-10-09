@@ -1,63 +1,71 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Codigo de Confirmacion:</strong>
-  <%= @service.co_confirmacion %>
-</p>
-<p>
-  <strong>Direccion Origen:</strong>
-  <%= @a1.tipo_street.no_tipo_via  %>
-  <%= @a1.street %>
-  <%= @a1.nu_casa  %>
-  <%= @a1.district.no_distrito %>
-</p>
-<p>
-  <strong>Direccion Destino:</strong>
-  <%= @a2.tipo_street.no_tipo_via  %>
-  <%= @a2.street %>
-  <%= @a2.nu_casa  %>
-  <%= @a2.district.no_distrito %>
-</p>
-<p>
-  <strong>Fecha:</strong>
-  <%= @service.fe_fecha.to_s %>
-</p>
-
-<p>
-  <strong>Hora:</strong>
-  <%= @service.fe_hora.to_s(:time) %> horas
-</p>
-
-<p>
-  <strong>Telefono de contacto:</strong>
-  <%= @service.nu_telefono %>
-</p>
-
-<p>
-  <strong>Costo aproximado:</strong>
-  <%= @service.ss_costo_estimado %>
-</p>
-
-<p>
-  <strong>Tipo de Vehiculo:</strong>
-  <%= @tipo_vehicle.no_tipo %>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @status.no_status %>
-</p>
-<% if @chofer && session[:role] == "user" %>
-<p>
-  <strong>Conductor:</strong>
-  <%= @chofer.no_driver %>
-</p>
-<% end %>
-
-<%= link_to 'Volver', current_user %>
+<h3>Detalle del servicio</h2>
+<table class="table table-striped table-bordered">
+  <tbody>
+      <tr>
+        <td><strong>Codigo de Confirmacion:</strong></td>
+        <td><%= @service.co_confirmacion %></td>
+      </tr>
+      <tr>
+        <td><strong>Direccion Origen:</strong></td>
+        <td><%= @a1.tipo_street.no_tipo_via  %>
+            <%= @a1.street %>
+            <%= @a1.nu_casa  %>
+            <%= @a1.district.no_distrito %></td>
+      </tr>
+      <tr>
+        <td><strong>Direccion Destino:</strong></td>
+        <td><%= @a2.tipo_street.no_tipo_via  %>
+            <%= @a2.street %>
+            <%= @a2.nu_casa  %>
+            <%= @a2.district.no_distrito %></td>
+      </tr>
+      <tr>
+        <td><strong>Fecha:</strong></td>
+        <td><%= @service.fe_fecha.to_s %></td>
+      </tr>
+      <tr>
+        <td><strong>Hora:</strong></td>
+        <td><%= @service.fe_hora.to_s(:time) %> horas</td>
+      </tr>
+      <tr>
+        <td><strong>Telefono de contacto:</strong></td>
+        <td><%= @service.nu_telefono %></td>
+      </tr>  
+      <tr>
+        <td><strong>Costo aproximado:</strong></td>
+        <td><%= @service.ss_costo_estimado %></td>
+      </tr>  
+      <tr>
+        <td><strong>Tipo de Vehiculo:</strong></td>
+        <td><%= @tipo_vehicle.no_tipo %></td>
+      </tr>  
+      <tr>
+        <td><strong>Estado:</strong></td>
+        <td><%= @status.no_status %></td>
+      </tr> 
+      <% if @chofer && session[:role] == "user" %> 
+      <tr>
+        <td><strong>Conductor:</strong></td>
+        <td><%= @chofer.no_driver %></td>
+      </tr>  
+      <% end %>  
+  </tbody>
+</table>
 <% if logged_in? && session[:role] == "driver" %>
-  <%= form_for [current_user, @service], method: :patch do |f| %>
-    <%= f.hidden_field :driver_id, value: current_user.id %>
-    <%= f.hidden_field :status_id, value: 2 %>
-    <%= f.submit 'Capturar Servicio' %>
+  <% if @service.driver_id %>
+    <% case @status.id %>
+    <% when 2 %>
+      <%= form_for [current_user, @service], method: :patch do |f| %>
+      <%= f.hidden_field :status_id, value: 3 %>
+      <%= f.submit 'En curso', :class => "btn btn-primary btn-md" %>
+      <% end %>
+    <% when 3 %>
+      <%= form_for [current_user, @service], method: :patch do |f| %>
+      <%= f.hidden_field :status_id, value: 4 %>
+      <%= f.submit 'Finalizado', :class => "btn btn-primary btn-md" %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
+<%= link_to 'Volver', current_user %>

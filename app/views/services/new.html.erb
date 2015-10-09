@@ -1,6 +1,16 @@
-<h1>Nuevo Servicio</h1>
-<h3><%= @user.no_user %></h3>
+<div class="row">
+	<div class="col-md-8">
+		<h2><%= gravatar_for_user @user %>
+ 		<%= @user.no_user %>
+		</h2>
+	</div>
+</div> 
 
-<%= render 'form' %>
 
-<%= link_to 'Volver', user_services_path(@user) %>
+
+<div class="row">
+	<div class="col-lg-12 col-md-12">
+		<%= render 'form' %>
+	</div>
+	<%= link_to 'Volver', user_services_path(@user) %>
+</div> 

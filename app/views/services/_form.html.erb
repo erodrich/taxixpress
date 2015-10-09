@@ -1,42 +1,82 @@
 <% flag = true %>
 
 <%= simple_form_for([current_user,@service]) do |f| %>
+<div class="row">
   <%= f.error_notification %>
   <% for addresses in @service.addresses %>
   <%= f.simple_fields_for :addresses, addresses do |a| %>
+  <div class="col-md-6">
     <% flag ? msg = "Origen" : msg = "Destino" %>
     <h2><%= msg %></h2>
     <div class="form-inputs">
-      <%= a.association :tipo_street, label: "Tipo de Via: ",
+      <div class="col-md-3">
+      <%= a.association :tipo_street, label: "Via: ",
                                       label_method: :no_tipo_via,
-                                      label_value: :id %>
-      <%= a.input :street, label: "Nombre de la Via: " %>
-      <%= a.input :nu_casa, label: "Numero: " %>
-      <%= a.input :tx_edif_dpto, label: "Edificio/Dpto/Lote: " %>
+                                      label_value: :id,
+                                      input_html: { class: 'form-control' } %>
+      </div>
+      <div class="col-md-6">
+      <%= a.input :street, label: "Nombre de la Via: ", input_html: { class: 'form-control' } %>
+      </div>
+      <div class="col-md-3">
+      <%= a.input :nu_casa, label: "Numero: ", input_html: { class: 'form-control' } %>
+      </div>
+      <div class="col-md-6">
+      <%= a.input :tx_edif_dpto, label: "Edificio/Dpto/Lote: ", input_html: { class: 'form-control' } %>
+      </div>
+      <div class="col-md-6">
       <%= a.association :district, label: "Distrito: ", 
                                    label_method: :no_distrito, 
-                                   label_value: :id %>
+                                   label_value: :id, input_html: { class: 'form-control' } %>
+      </div>
     </div>
     <% flag=false %>
+    <% end %>
+  </div>
   <% end %>
-  <% end %>
-  <div class="form-inputs">
+ </div> 
+<div class="row">
+  <div class = "form-group">
+  <div class="form-group">
+    <div class="col-sm-3">
+    <%= f.input :fe_fecha, label: "Fecha: ",input_html: { class: 'form-control' }  %>
+    </div>
+    <div class="col-sm-3">
+        <%= f.input :fe_hora, label: "Hora: ", input_html: { class: 'form-control' } %>
+    </div>
+  </div>
+</div>
+</div>
 
-    <%= f.input :fe_fecha, label: "Fecha: "  %>
-    <%= f.input :fe_hora, label: "Hora: " %>
-    <%= f.input :nu_telefono, label: "Telefono: " %>
+ 
+<div class="row">
+  <div class="form-group">
+  <div class="form-group">
+    <div class="col-sm-3">
+    <%= f.input :nu_telefono, label: "Telefono: ",
+                               input_html: { class: 'form-control' }%>
+  
     <%= f.association :tipo_vehicle, 
                                label_method: :nu_pasajeros,
                                label_value: :id,
-                               label: "Hasta cuantos pasajeros: "  %>
+                               label: "Hasta cuantos pasajeros: ",
+                               input_html: { class: 'form-control' }  %>
     <%= f.association :payment_method, 
                                label_method: :tx_descripcion,
                                label_value: :id,
-                               label: "Forma de pago: "  %>
- 
+                               label: "Forma de pago: ",
+                               input_html: { class: 'form-control' }  %>
+      </div>
+    </div>
+  </div>
+  </div>
+   <div class="form-actions">
+    <%= f.submit "Enviar", label: "Enviar", :class => "btn btn-primary btn-md" %>
+  </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, label: "Enviar" %>
+
   </div>
 <% end %>
+
+

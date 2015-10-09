@@ -1,9 +1,22 @@
 <p id="notice"><%= notice %></p>
+<h2><%= @user.no_user %> comentó:</h2>
+<div class="well">
+  <div class="container-fixed">
+    <div class="row">
+      <div class="col-lg-12">
+        <p>
+  			<%= @feedback.tx_comentario %>
+				</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Tx comentario:</strong>
-  <%= @feedback.tx_comentario %>
-</p>
+<% if session[:role] == "driver" %>
+	<%= link_to 'Volver', driver_path(@driver) %>
+<% else %>
+	<%= link_to 'Edit', edit_user_service_feedback_path(@user, @service,@feedback) %> |
+	<%= link_to 'Volver', user_path(@user) %>
+<% end %>
 
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
+

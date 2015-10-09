@@ -1,6 +1,6 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :set_client
   before_action :set_service
 
   # GET /feedbacks
@@ -12,6 +12,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
+    @user = User.find_by(id: @feedback.user_id)
   end
 
   # GET /feedbacks/new
@@ -28,10 +29,11 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.service_id = @service.id
+    @feedback.user_id = @user.id
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to [@service, @feedback], notice: 'Feedback was successfully created.' }
+        format.html { redirect_to [@user, @service, @feedback], notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -45,7 +47,7 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to [@service, @feedback], notice: 'Feedback was successfully updated.' }
+        format.html { redirect_to [@user, @service, @feedback], notice: 'Feedback was successfully updated.' }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -59,7 +61,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
+      format.html { redirect_to user_services_url, notice: 'Feedback was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,12 +72,20 @@ class FeedbacksController < ApplicationController
       @feedback = Feedback.find(params[:id])
     end
 
-    def set_user
-      @user = User.find(params[:user_id])
-    end
-
     def set_service
       @service = Service.find(params[:service_id])
+    end
+
+    def set_client
+      @user = User.find_by(id: params[:user_id])
+      @driver = Driver.find_by(id: params[:driver_id])
+      if @user
+        return @user
+      else
+        if @driver
+          return @driver
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

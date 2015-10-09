@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @services = Service.where(["user_id = ?", @user.id])
+    @feedbacks = Feedback.where(["user_id = ?", @user.id])
   end
 
   # GET /users/new

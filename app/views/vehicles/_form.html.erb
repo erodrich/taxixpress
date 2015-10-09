@@ -1,17 +1,21 @@
-<%= simple_form_for([@driver,@vehicle]) do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for([@driver,@vehicle]) do |v| %>
+  <%= v.error_notification %>
+<div class="row">
+<div class="col-md-5">
+<div class="form-group">
   <div class="form-inputs">
-    <%= f.input :no_marca, label: "Marca: " %>
-    <%= f.input :no_modelo, label: "Modelo: " %>
-    <%= f.input :nu_placa, label: "Placa: " %>
-    <%= f.association :tipo_vehicle, 
+        <%= v.input :no_marca, label: "Marca: ", input_html: { class: 'form-control' }%>
+        <%= v.input :no_modelo, label: "Modelo: ", input_html: { class: 'form-control' } %>
+        <%= v.input :nu_placa, label: "Placa: ", input_html: { class: 'form-control' } %>
+        <%= v.association :tipo_vehicle, 
                                label_method: :no_tipo,
                                label_value: :id,
-                               label: "Tipo de Vehiculo: "  %>
+                               label: "Tipo de Vehiculo: ", input_html: { class: 'form-control' }  %>
   </div>
-
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= v.submit "Enviar", :class =>'btn btn-primary' %>
   </div>
+</div>
+</div>
+</div>
 <% end %>
