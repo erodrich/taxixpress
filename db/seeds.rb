@@ -90,4 +90,7 @@ payment_methods = PaymentMethod.create([
 	{tx_descripcion: "Tarjeta debito" },
 	{tx_descripcion: "Tarjeta credito"}
 	])
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(email: 'admin@taxixpress.com', password: 'password', password_confirmation: 'password')
+User.create(no_user: "Eric Rodrich", no_correo: "erodrich@gmail.com", password: '11111111', password_confirmation: '11111111')
+User.create(no_user: "Freddy Briceño", no_correo: "fbriceno@gmail.com", password: '11111111', password_confirmation: '11111111')
+User.create(no_user: "Hugo Garcia", no_correo: "hgarcia@gmail.com", password: '11111111', password_confirmation: '11111111')
