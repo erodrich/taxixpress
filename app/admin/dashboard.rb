@@ -34,10 +34,29 @@ ActiveAdmin.register_page "Dashboard" do
   content do
     para "Ultimos usuarios registrados"
     table_for User.order("created_at desc").limit(5) do
-        column :no_user
-        column :no_correo
-        column :created_at
+        column "Nombre", :no_user
+        column "Correo", :no_correo
+        column "Registrado", :created_at
     end
-    strong { link_to "Ver usuarios", admin_usuarios_path}
+    strong { link_to "Ver usuarios", admin_users_path}
+
+    para "Ultimos servicios solicitados"
+    table_for Service.order("created_at desc").limit(5) do
+        column "Dia", :fe_fecha
+        column "Hora", :fe_hora
+        column "Usuario", :user_id
+        column "Estado", :status_id
+        column "Registrado", :created_at
+    end
+    strong { link_to "Ver servicios", admin_services_path}
+
+    para "Ultimos choferes registrados"
+    table_for Driver.order("created_at desc").limit(5) do
+        column "Nombre", :no_driver
+        column "Correo", :no_correo
+        column "Telefono", :nu_telefono
+        column "Registrado", :created_at
+    end
+    strong { link_to "Ver choferes", admin_drivers_path}
   end
 end

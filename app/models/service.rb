@@ -1,12 +1,13 @@
 class Service < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :driver
-	has_one :status
-	has_one	:feedback
+	belongs_to :status
+	has_one	:feedback, dependent: :destroy
 	belongs_to :tipo_vehicle
 	belongs_to :payment_method
 	has_many :addresses_services
 	has_many :addresses, :through => :addresses_services
+	
 
 
 	accepts_nested_attributes_for :addresses
@@ -14,6 +15,7 @@ class Service < ActiveRecord::Base
 
 	after_commit :set_costo_estimado, on: :create
 	
+
 	def get_feedback
 		feedback = Feedback.find_by(service_id: self.id)
 	end
