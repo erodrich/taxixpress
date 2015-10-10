@@ -86,7 +86,9 @@ ActiveAdmin.register Service do
 	  	row('Estado') {service.status.no_status}
 	  	row('Conductor') {service.driver.no_driver}
 	  	row('Usuario') {service.user.no_user}
-	  	row('Feedback') {service.feedback.tx_comentario}
+	  	if service.feedback 
+	  		row('Feedback') {service.feedback.tx_comentario}
+	  	end
 	  end
 	end
 

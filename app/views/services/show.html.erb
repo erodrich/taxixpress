@@ -66,6 +66,12 @@
       <%= f.submit 'Finalizado', :class => "btn btn-primary btn-md" %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= form_for [current_user, @service], method: :patch do |f| %>
+      <%= f.hidden_field :driver_id, value: current_user.id %>
+      <%= f.hidden_field :status_id, value: 2 %>
+      <%= f.submit 'Capturar Servicio', :class => "btn btn-primary btn-md" %>
+    <% end %>
   <% end %>
 <% end %>
 <%= link_to 'Volver', current_user %>

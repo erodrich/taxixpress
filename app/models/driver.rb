@@ -16,9 +16,11 @@ class Driver < ActiveRecord::Base
 
 	def get_possible_services
 		vehicle = Vehicle.where(["driver_id = ?", self.id])
-		tipo_vehicle = vehicle.first.tipo_vehicle.id
-		services = Service.where(["tipo_vehicle_id = ? and status_id = ?",
+		if !vehicle.empty?
+			tipo_vehicle = vehicle.first.tipo_vehicle.id
+			services = Service.where(["tipo_vehicle_id = ? and status_id = ?",
 																						tipo_vehicle, 1])
+		end
 		return services
 	end
 
